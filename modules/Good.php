@@ -1,5 +1,5 @@
 <?php
-
+namespace App\modules;
 
 class Good extends Model
 {

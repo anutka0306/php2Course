@@ -1,5 +1,5 @@
 <?php
-
+namespace App\modules;
 
 class Orders extends Model
 {
