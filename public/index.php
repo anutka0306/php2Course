@@ -1,13 +1,17 @@
 <?php
+use App\modules\Good;
+use App\modules\User;
+use App\modules\Orders;
+
 include dirname(__DIR__).'/services/Autoload.php';
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 
 $db = new App\services\DB();
 
-$good = new App\modules\Good($db);
-$user = new App\modules\User($db);
-$order = new App\modules\Orders($db);
+$good = new Good($db);
+$user = new User($db);
+$order = new Orders($db);
 $good->calcRows();
 var_dump($good->getOne(12));
 var_dump($good->getAll());
