@@ -1,8 +1,12 @@
 <?php
 namespace App\modules;
 
-abstract class Model
+use App\services\ICalcRows;
+use App\services\TCalcRows;
+
+abstract class Model implements ICalcRows
 {
+    use TCalcRows;
     protected $db;
 
     public function __construct($db)
@@ -20,7 +24,12 @@ abstract class Model
     public function getAll(){
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName}";
-        return $this->db->find($sql);
+        return $this->db->findAll($sql);
+    }
+    public function insert(){
+        $tableName = $this->getTableName();
+        $sql = "SELECT * FROM {$tableName}";
+        return $this->db->insert($sql);
     }
 
 }

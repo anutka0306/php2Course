@@ -8,10 +8,13 @@ $db = new App\services\DB();
 $good = new App\modules\Good($db);
 $user = new App\modules\User($db);
 $order = new App\modules\Orders($db);
+$good->calcRows();
 var_dump($good->getOne(12));
 var_dump($good->getAll());
 var_dump($user->getOne(12));
 var_dump($user->getAll());
 var_dump($order->getOne(12));
 var_dump($order->getAll());
+var_dump($order->getTableName());
+var_dump($order->insert());
 
