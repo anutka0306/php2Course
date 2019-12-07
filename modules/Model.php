@@ -27,9 +27,7 @@ abstract class Model
         return $this->db->findAll($sql);
     }
     public function insert(){
-        $tableName = $this->getTableName();
-        $sql = "SELECT * FROM {$tableName}";
-        return $this->db->insert($sql);
+        // todo
     }
 
 }

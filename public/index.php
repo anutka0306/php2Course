@@ -10,6 +10,15 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 //$db = new App\services\DB();
 
 $good = new Good();
+$good ->id = '12';
+$good ->name = 'Test';
+$good->description = 'tra-la-la';
+$good->category = '1';
+$good->image = 'jkjkjkjk';
+$good->price='2000';
+$good->views_count='0';
+$good->getData();
+
 $user = new User();
 $order = new Orders();
 $good->calcRows();
