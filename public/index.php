@@ -7,18 +7,18 @@ include dirname(__DIR__).'/services/Autoload.php';
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 
-$db = new App\services\DB();
+//$db = new App\services\DB();
 
-$good = new Good($db);
-$user = new User($db);
-$order = new Orders($db);
+$good = new Good();
+$user = new User();
+$order = new Orders();
 $good->calcRows();
-var_dump($good->getOne(12));
+var_dump($good->getOne(1));
 var_dump($good->getAll());
-var_dump($user->getOne(12));
+var_dump($user->getOne(4));
 var_dump($user->getAll());
 var_dump($order->getOne(12));
 var_dump($order->getAll());
 var_dump($order->getTableName());
-var_dump($order->insert());
+//var_dump($order->insert());
 
