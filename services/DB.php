@@ -1,7 +1,7 @@
 <?php
 namespace App\services;
 
-class DB implements ICalcRows, IDB
+class DB implements IDB
 {
     use TCalcRows;
     public function find(string $sql){

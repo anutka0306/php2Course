@@ -1,10 +1,9 @@
 <?php
 namespace App\modules;
 
-use App\services\ICalcRows;
 use App\services\TCalcRows;
 
-abstract class Model implements ICalcRows
+abstract class Model
 {
     use TCalcRows;
     protected $db;
