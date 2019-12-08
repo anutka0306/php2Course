@@ -17,7 +17,9 @@ $good->category = '1';
 $good->image = 'jkjkjkjk';
 $good->price='2000';
 $good->views_count='0';
-$good->insert();
+
+//Insert Test
+//$good->insert();
 
 $user = new User();
 $order = new Orders();

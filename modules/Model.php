@@ -29,16 +29,17 @@ abstract class Model
     public function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
-        $sql = "INSERT INTO {$tableName} SET(";
+        $sql = "INSERT INTO {$tableName}(";
         foreach ($data as $key => $val){
             ($val == end($data)) ? $sql.=$key : $sql.=$key . ', ';
         }
         $sql.=") VALUES (";
         foreach ($data as $val){
-            ($val == end($data)) ? $sql.=$val : $sql.=$val . ', ';
+            ($val == end($data)) ? $sql.="'".$val."'" : $sql.="'".$val."'" . ', ';
         }
         $sql.=")";
         echo $sql;
+        return $this->db->insert($sql);
     }
 
     public function getData(){
