@@ -10,13 +10,12 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 //$db = new App\services\DB();
 
 $good = new Good();
-$good ->id = '12';
-$good ->name = 'Test';
-$good->description = 'tra-la-la';
-$good->category = '1';
-$good->image = 'jkjkjkjk';
-$good->price='2000';
-$good->views_count='0';
+$good ->name = 'Nice Dress';
+$good->description = 'Test Description';
+$good->category = '2';
+$good->image = 'picture';
+$good->price='2100';
+
 
 //Insert Test
 //$good->insert();
@@ -30,7 +29,11 @@ $user->password='12345';
 
 //Insert Test
 //$user->insert();
-$good->update(3);
+
+//Update Test
+//$user->update(2);
+//$good->update(4);
+
 $order = new Orders();
 $good->calcRows();
 //var_dump($good->getAll());

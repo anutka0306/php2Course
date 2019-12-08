@@ -31,7 +31,8 @@ class Good extends Model
         foreach ($data as $key => $val){
             ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
         }
-        $sql.=" WHERE good_id=".$id;
+        $sql.=" WHERE good_id= :id";
         echo $sql;
+        return $this->db->update($sql, [':id' => $id]);
     }
 }

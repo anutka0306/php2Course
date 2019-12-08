@@ -51,8 +51,9 @@ abstract class Model
         foreach ($data as $key => $val){
             ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
         }
-        $sql.=" WHERE id=".$id;
+        $sql.=" WHERE id= :id";
         echo $sql;
+        return $this->db->update($sql, [':id' => $id]);
     }
 
     public function getData(){
