@@ -22,6 +22,15 @@ $good->views_count='0';
 //$good->insert();
 
 $user = new User();
+$user->name='InsertTest';
+$user->role = '1';
+$user->tel = '8966755454';
+$user->login = 'TestLogin';
+$user->password='12345';
+
+//Insert Test
+//$user->insert();
+
 $order = new Orders();
 $good->calcRows();
 //var_dump($good->getAll());

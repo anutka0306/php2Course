@@ -11,26 +11,7 @@ class Good extends Model
     public $price;
     public $views_count;
 
-   /* public function getData(){
-       $data = [];
-       foreach ($this as $property => $value){
-           if(($property == 'id') || ($property == 'db')||($property == 'views_count')){
-               continue;
-           }
-           $data[$property] = $value;
-       }
-       var_dump($data);
-       $string = "INSERT INTO table SET(";
-       foreach ($data as $key => $val){
-           ($val == end($data)) ? $string.=$key : $string.=$key . ', ';
-       }
-       $string.=") VALUES (";
-       foreach ($data as $val){
-           ($val == end($data)) ? $string.=$val : $string.=$val . ', ';
-       }
-       $string.=")";
-       echo $string;
-    } */
+
 
     public function getTableName(): string
     {

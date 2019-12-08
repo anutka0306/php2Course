@@ -21,11 +21,13 @@ abstract class Model
         $sql = "SELECT * FROM {$tableName} WHERE id= :id";
         return $this->db->find($sql, [':id' => $id]);
     }
+
     public function getAll(){
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName}";
         return $this->db->findAll($sql);
     }
+
     public function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
@@ -47,6 +49,9 @@ abstract class Model
         foreach ($this as $property => $value){
             if(($property == 'id') || ($property == 'db')||($property == 'views_count')){
                 continue;
+            }
+            if($property == 'password'){
+                $value = md5($value);
             }
             $data[$property] = $value;
         }
