@@ -60,6 +60,12 @@ abstract class Model
         ($id) ? $this->update($id) : $this->insert();
     }
 
+    public function delete($id){
+        $tableName = $this->getTableName();
+        $sql = "DELETE FROM {$tableName} WHERE id= :id";
+        return $this->db->delete($sql, [':id' => $id]);
+    }
+
     public function getData(){
         $data = [];
         foreach ($this as $property => $value){

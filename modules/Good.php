@@ -35,4 +35,10 @@ class Good extends Model
         echo $sql;
         return $this->db->update($sql, [':id' => $id]);
     }
+
+    public function delete($id){
+        $tableName = $this->getTableName();
+        $sql = "DELETE FROM {$tableName} WHERE good_id= :id";
+        return $this->db->delete($sql, [':id' => $id]);
+    }
 }

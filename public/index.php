@@ -31,8 +31,12 @@ $user->password='123451';
 //$user->save();
 //$user->save(2);
 
+//Delete test
+//$good->delete(10);
+//$user->delete(9);
 
 $order = new Orders();
+//$order->delete(17);
 $good->calcRows();
 //var_dump($good->getAll());
 //var_dump($user->getOne(4));
