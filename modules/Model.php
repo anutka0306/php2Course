@@ -44,6 +44,17 @@ abstract class Model
         return $this->db->insert($sql);
     }
 
+    public function update($id){
+        $tableName = $this->getTableName();
+        $data = $this->getData();
+        $sql = "UPDATE {$tableName} SET " ;
+        foreach ($data as $key => $val){
+            ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
+        }
+        $sql.=" WHERE id=".$id;
+        echo $sql;
+    }
+
     public function getData(){
         $data = [];
         foreach ($this as $property => $value){

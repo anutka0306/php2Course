@@ -23,4 +23,15 @@ class Good extends Model
         $sql = "SELECT * FROM {$tableName} WHERE good_id= :id";
         return $this->db->find($sql, [':id' => $id]);
     }
+
+    public function update($id){
+        $tableName = $this->getTableName();
+        $data = $this->getData();
+        $sql = "UPDATE {$tableName} SET " ;
+        foreach ($data as $key => $val){
+            ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
+        }
+        $sql.=" WHERE good_id=".$id;
+        echo $sql;
+    }
 }

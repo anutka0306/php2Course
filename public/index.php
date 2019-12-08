@@ -30,7 +30,7 @@ $user->password='12345';
 
 //Insert Test
 //$user->insert();
-
+$good->update(3);
 $order = new Orders();
 $good->calcRows();
 //var_dump($good->getAll());
