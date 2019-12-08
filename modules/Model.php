@@ -28,7 +28,7 @@ abstract class Model
         return $this->db->findAll($sql);
     }
 
-    public function insert(){
+    protected function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
         $sql = "INSERT INTO {$tableName}(";
@@ -44,7 +44,7 @@ abstract class Model
         return $this->db->insert($sql);
     }
 
-    public function update($id){
+    protected function update($id){
         $tableName = $this->getTableName();
         $data = $this->getData();
         $sql = "UPDATE {$tableName} SET " ;
@@ -54,6 +54,10 @@ abstract class Model
         $sql.=" WHERE id= :id";
         echo $sql;
         return $this->db->update($sql, [':id' => $id]);
+    }
+
+    public function save($id=null){
+        ($id) ? $this->update($id) : $this->insert();
     }
 
     public function getData(){

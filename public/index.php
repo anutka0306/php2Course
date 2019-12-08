@@ -10,29 +10,27 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 //$db = new App\services\DB();
 
 $good = new Good();
-$good ->name = 'Nice Dress';
-$good->description = 'Test Description';
+$good ->name = 'Nice Dress 1';
+$good->description = 'Test Description 1';
 $good->category = '2';
-$good->image = 'picture';
-$good->price='2100';
+$good->image = 'picture 1';
+$good->price='21001';
 
-
-//Insert Test
-//$good->insert();
 
 $user = new User();
-$user->name='InsertTest';
+$user->name='InsertTest2';
 $user->role = '1';
-$user->tel = '8966755454';
-$user->login = 'TestLogin';
-$user->password='12345';
+$user->tel = '89667554541';
+$user->login = 'TestLogin1';
+$user->password='123451';
 
-//Insert Test
-//$user->insert();
 
-//Update Test
-//$user->update(2);
-//$good->update(4);
+//Save test
+//$good->save();
+//$good->save(2);
+//$user->save();
+//$user->save(2);
+
 
 $order = new Orders();
 $good->calcRows();
