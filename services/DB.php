@@ -59,7 +59,7 @@ class DB implements IDB
         return $this->query($sql, $params)->fetchAll();
     }
 
-    public function insert(string $sql){
-        return $sql ." Insert";
+    public function insert(string $sql, $params =[]){
+        return $this->query($sql, $params);
     }
 }

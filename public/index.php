@@ -17,17 +17,17 @@ $good->category = '1';
 $good->image = 'jkjkjkjk';
 $good->price='2000';
 $good->views_count='0';
-$good->getData();
+$good->insert();
 
 $user = new User();
 $order = new Orders();
 $good->calcRows();
-var_dump($good->getOne(1));
-var_dump($good->getAll());
-var_dump($user->getOne(4));
-var_dump($user->getAll());
-var_dump($order->getOne(12));
-var_dump($order->getAll());
-var_dump($order->getTableName());
+//var_dump($good->getAll());
+//var_dump($user->getOne(4));
+//var_dump($user->getAll());
+//var_dump($order->getOne(12));
+//var_dump($good->getOne(1));
+//var_dump($order->getAll());
+//var_dump($order->getTableName());
 //var_dump($order->insert());
 

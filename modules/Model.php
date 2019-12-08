@@ -27,7 +27,29 @@ abstract class Model
         return $this->db->findAll($sql);
     }
     public function insert(){
-        // todo
+        $tableName = $this->getTableName();
+        $data = $this->getData();
+        $sql = "INSERT INTO {$tableName} SET(";
+        foreach ($data as $key => $val){
+            ($val == end($data)) ? $sql.=$key : $sql.=$key . ', ';
+        }
+        $sql.=") VALUES (";
+        foreach ($data as $val){
+            ($val == end($data)) ? $sql.=$val : $sql.=$val . ', ';
+        }
+        $sql.=")";
+        echo $sql;
+    }
+
+    public function getData(){
+        $data = [];
+        foreach ($this as $property => $value){
+            if(($property == 'id') || ($property == 'db')||($property == 'views_count')){
+                continue;
+            }
+            $data[$property] = $value;
+        }
+        return $data;
     }
 
 }
