@@ -42,8 +42,8 @@ $good->calcRows();
 //var_dump($user->getOne(4));
 //var_dump($user->getAll());
 //var_dump($order->getOne(12));
-//var_dump($good->getOne(1));
-//var_dump($order->getAll());
+var_dump($good->getOne(1));
+var_dump($order->getAll());
 //var_dump($order->getTableName());
 //var_dump($order->insert());
 

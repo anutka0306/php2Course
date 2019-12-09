@@ -21,7 +21,7 @@ class Good extends Model
     public function getOne($id){
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName} WHERE good_id= :id";
-        return $this->db->find($sql, [':id' => $id]);
+        return $this->db->queryObject($sql, static::class, [':id' => $id]);
     }
 
     public function update($id){

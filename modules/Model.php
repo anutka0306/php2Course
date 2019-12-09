@@ -19,13 +19,13 @@ abstract class Model
     public function getOne($id){
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName} WHERE id= :id";
-        return $this->db->find($sql, [':id' => $id]);
+        return $this->db->queryObject($sql, static::class, [':id' => $id]);
     }
 
     public function getAll(){
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName}";
-        return $this->db->findAll($sql);
+        return $this->db->queryObjects($sql, static::class);
     }
 
     protected function insert(){
