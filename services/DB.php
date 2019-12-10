@@ -50,6 +50,7 @@ class DB implements IDB
         return$PDOStatement;
     }
 
+
     public function queryObject(string $sql, $class, $params =[]){
         $PDOStatement = $this->query($sql, $params);
         $PDOStatement->setFetchMode(\PDO::FETCH_CLASS, $class);
@@ -80,6 +81,10 @@ class DB implements IDB
     }
 
     public function delete(string $sql, $params =[]){
+        return $this->query($sql, $params);
+    }
+    public function exec(string $sql, $params =[])
+    {
         return $this->query($sql, $params);
     }
 }

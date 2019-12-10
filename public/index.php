@@ -18,12 +18,12 @@ $good->price='21001';
 
 
 $user = new User();
-$user->name='InsertTest2';
+$user->name='XXXXXXX';
 $user->role = '1';
 $user->tel = '89667554541';
 $user->login = 'TestLogin1';
 $user->password='123451';
-
+$user->save(4);
 
 //Save test
 //$good->save();
@@ -37,13 +37,13 @@ $user->password='123451';
 
 $order = new Orders();
 //$order->delete(17);
-$good->calcRows();
+//$good->calcRows();
 //var_dump($good->getAll());
 //var_dump($user->getOne(4));
 //var_dump($user->getAll());
 //var_dump($order->getOne(12));
-var_dump($good->getOne(1));
-var_dump($order->getAll());
+//var_dump($good->getOne(1));
+//var_dump($order->getAll());
 //var_dump($order->getTableName());
 //var_dump($order->insert());
 

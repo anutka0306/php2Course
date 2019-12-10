@@ -31,29 +31,38 @@ abstract class Model
     protected function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
-        $sql = "INSERT INTO {$tableName}(";
-        foreach ($data as $key => $val){
-            ($val == end($data)) ? $sql.=$key : $sql.=$key . ', ';
+        $columns =[];
+        $params =[];
+
+        foreach ($data as $property => $value){
+            $columns[] = $property;
+            $params[":{$property}"] = $value;
         }
-        $sql.=") VALUES (";
-        foreach ($data as $val){
-            ($val == end($data)) ? $sql.="'".$val."'" : $sql.="'".$val."'" . ', ';
-        }
-        $sql.=")";
+        $columnString = implode(", ", $columns);
+        $placeholders = implode(", ", array_keys($params));
+        $sql = "INSERT INTO $tableName($columnString) VALUES( $placeholders)";
         echo $sql;
-        return $this->db->insert($sql);
+        return $this->db->exec($sql, $params);
     }
 
     protected function update($id){
         $tableName = $this->getTableName();
         $data = $this->getData();
-        $sql = "UPDATE {$tableName} SET " ;
-        foreach ($data as $key => $val){
-            ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
+        $columns =[];
+        $params =[];
+        foreach ($data as $property => $value){
+            $columns[":{$property}"] = $property;
+            $params[":{$property}"] = $value;
         }
-        $sql.=" WHERE id= :id";
+
+        $sql = "UPDATE $tableName SET ";
+        foreach ($columns as $key => $val){
+            ($val == end($columns)) ? $sql .= "$val = $key" : $sql .= "$val = $key, ";
+        }
+        $sql .= " WHERE id = $id";
         echo $sql;
-        return $this->db->update($sql, [':id' => $id]);
+        //var_dump($params);
+        return $this->db->exec($sql, $params);
     }
 
     public function save($id=null){
