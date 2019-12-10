@@ -28,7 +28,7 @@ abstract class Model
         return $this->db->queryObjects($sql, static::class);
     }
 
-    protected function insert(){
+    public function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
         $columns =[];
@@ -42,7 +42,8 @@ abstract class Model
         $placeholders = implode(", ", array_keys($params));
         $sql = "INSERT INTO $tableName($columnString) VALUES( $placeholders)";
         echo $sql;
-        return $this->db->exec($sql, $params);
+        $this->db->exec($sql, $params);
+        $this->id = $this->db->lastInsertId();
     }
 
     protected function update($id){
@@ -62,17 +63,17 @@ abstract class Model
         $sql .= " WHERE id = $id";
         echo $sql;
         //var_dump($params);
-        return $this->db->exec($sql, $params);
+        $this->db->exec($sql, $params);
     }
 
     public function save($id=null){
         ($id) ? $this->update($id) : $this->insert();
     }
 
-    public function delete($id){
+    public function delete(){
         $tableName = $this->getTableName();
         $sql = "DELETE FROM {$tableName} WHERE id= :id";
-        return $this->db->delete($sql, [':id' => $id]);
+        $this->db->exec($sql, [':id' => $this->id]);
     }
 
     public function getData(){

@@ -10,7 +10,7 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 //$db = new App\services\DB();
 
 $good = new Good();
-$good ->name = 'Nice Dress 2';
+$good ->name = 'XXXXXX56565';
 $good->description = 'Test Description 1';
 $good->category = '2';
 $good->image = 'picture 1';
@@ -23,20 +23,23 @@ $user->role = '1';
 $user->tel = '89667554541';
 $user->login = 'TestLogin1';
 $user->password='123451';
+
+//Delete Test
+
+/*$good2 = (new Orders())->getOne(16);
+var_dump($good2);
+$good2->delete();*/
+
+
 //$user->save();
 
 //Save test
-$good->save(10);
-//$good->save(2);
+//$good->save(8);
+//$good->save();
 //$user->save();
-//$user->save(2);
 
-//Delete test
-//$good->delete(10);
-//$user->delete(9);
 
 $order = new Orders();
-//$order->delete(17);
 //$good->calcRows();
 //var_dump($good->getAll());
 //var_dump($user->getOne(4));
