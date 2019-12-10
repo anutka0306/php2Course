@@ -10,23 +10,23 @@ spl_autoload_register([new Autoload(), 'loadClass']);
 //$db = new App\services\DB();
 
 $good = new Good();
-$good ->name = 'Nice Dress 1';
+$good ->name = 'Nice Dress 2';
 $good->description = 'Test Description 1';
 $good->category = '2';
 $good->image = 'picture 1';
-$good->price='21001';
+$good->price='22222';
 
 
 $user = new User();
-$user->name='XXXXXXX';
+$user->name='XXXXXXX2';
 $user->role = '1';
 $user->tel = '89667554541';
 $user->login = 'TestLogin1';
 $user->password='123451';
-$user->save(4);
+//$user->save();
 
 //Save test
-//$good->save();
+$good->save(10);
 //$good->save(2);
 //$user->save();
 //$user->save(2);

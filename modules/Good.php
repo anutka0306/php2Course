@@ -24,16 +24,24 @@ class Good extends Model
         return $this->db->queryObject($sql, static::class, [':id' => $id]);
     }
 
-    public function update($id){
+    protected function update($id){
         $tableName = $this->getTableName();
         $data = $this->getData();
-        $sql = "UPDATE {$tableName} SET " ;
-        foreach ($data as $key => $val){
-            ($val == end($data)) ? $sql.= $key."='".$val."'" : $sql.= $key."='".$val."', ";
+        $columns =[];
+        $params =[];
+        foreach ($data as $property => $value){
+            $columns[":{$property}"] = $property;
+            $params[":{$property}"] = $value;
         }
-        $sql.=" WHERE good_id= :id";
+
+        $sql = "UPDATE $tableName SET ";
+        foreach ($columns as $key => $val){
+            ($val == end($columns)) ? $sql .= "$val = $key" : $sql .= "$val = $key, ";
+        }
+        $sql .= " WHERE good_id = $id";
         echo $sql;
-        return $this->db->update($sql, [':id' => $id]);
+        //var_dump($params);
+        return $this->db->exec($sql, $params);
     }
 
     public function delete($id){
