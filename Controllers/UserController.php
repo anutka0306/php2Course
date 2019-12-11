@@ -23,11 +23,21 @@ class UserController
 
     public function allAction(){
         $users = (new User())->getAll();
-        return $this->renderTmpl('users', ['users'=>$users]);
+        return $this->render('users', ['users'=>$users]);
     }
 
     public function oneAction(){
-        return 'One User';
+        $oUser = new User();
+        $user = $oUser->getOne($_GET['id']);
+        return $this->renderTmpl('user', ['user' => $user]);
+    }
+
+    public function render($template, $params = []){
+        $content = $this->renderTmpl($template, $params);
+        return $this->renderTmpl(
+          'layouts/main',
+            ['content'=>$content]
+        );
     }
 
     /**
