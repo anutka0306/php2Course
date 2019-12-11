@@ -4,6 +4,8 @@
 namespace App\Controllers;
 
 
+use App\modules\User;
+
 class UserController
 {
     protected $defaultAction = 'all';
@@ -20,10 +22,23 @@ class UserController
     }
 
     public function allAction(){
-        return 'All Users';
+        $users = (new User())->getAll();
+        return $this->renderTmpl('users', ['users'=>$users]);
     }
 
     public function oneAction(){
         return 'One User';
+    }
+
+    /**
+     * @param $template
+     * @param array $params ["users"=>123, "tr"=>[1,5,6]]
+     * @return false|string;
+     */
+    public function renderTmpl($template, $params = []){
+        ob_start();
+        extract($params);
+        include dirname(__DIR__) . '/views/' . $template . '.php';
+        return ob_get_clean();
     }
 }
