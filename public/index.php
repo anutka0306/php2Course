@@ -3,6 +3,7 @@ use App\modules\Good;
 use App\modules\User;
 use App\modules\Orders;
 
+
 include dirname(__DIR__).'/services/Autoload.php';
 spl_autoload_register([new Autoload(), 'loadClass']);
 
@@ -15,5 +16,5 @@ $controllerClass = 'App\\Controllers\\'. ucfirst($controllerName).'Controller';
 
 if(class_exists($controllerClass)){
     $controller = new $controllerClass;
-    $controller->run($actionName);
+    echo $controller->run($actionName);
 }
