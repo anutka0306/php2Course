@@ -29,7 +29,7 @@ class UserController
     public function oneAction(){
         $oUser = new User();
         $user = $oUser->getOne($_GET['id']);
-        return $this->renderTmpl('user', ['user' => $user]);
+        return $this->render('user', ['user' => $user]);
     }
 
     public function render($template, $params = []){
