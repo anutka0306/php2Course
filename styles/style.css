@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.catalog_wrap{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.catalog_item{
+    text-align: center;
+}
+.catalog_item-img{
+    width: 150px;
+}
