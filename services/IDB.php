@@ -14,5 +14,5 @@ interface IDB
      * @return mixed
      */
     public function findAll(string $sql, $params);
-    public function insert(string $sql, $params);
+
 }

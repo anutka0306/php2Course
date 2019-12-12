@@ -28,7 +28,7 @@ abstract class Model
         return $this->db->queryObjects($sql, static::class);
     }
 
-    public function insert(){
+    protected function insert(){
         $tableName = $this->getTableName();
         $data = $this->getData();
         $columns =[];
