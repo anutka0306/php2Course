@@ -22,4 +22,18 @@ class UserController extends Controller
         return $this->render('user', ['user' => $user]);
     }
 
+    public function addAction(){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $user = new User();
+            $user->login = $_POST['login'];
+            $user->name = $_POST['name'];
+            $user->role = $_POST['role'];
+            $user->tel = $_POST['tel'];
+            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $user->save();
+            return header('Location: ?c=user');
+        }
+        return $this->render('userAdd');
+    }
+
 }

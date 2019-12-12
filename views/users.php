@@ -1,3 +1,4 @@
+<a href="?c=user&a=add">Добавить пользователя</a>
 <?php
 /**
  * @var App\modules\User [] $users
