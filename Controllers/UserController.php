@@ -36,4 +36,22 @@ class UserController extends Controller
         return $this->render('userAdd');
     }
 
+    public function updateAction(){
+        if(empty($_GET['id'])){
+            return header('Location: ?c=user');
+        }
+        $user = (new User())->getOne($_GET['id']);
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $user->login = $_POST['login'];
+            $user->name = $_POST['name'];
+            $user->role = $_POST['role'];
+            $user->tel = $_POST['tel'];
+            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $user->save($_GET['id']);
+            return header('Location: ?c=user');
+        }
+        return $this->render('userUpdate', ['user' => $user]);
+    }
+
 }

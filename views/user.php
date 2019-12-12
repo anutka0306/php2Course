@@ -9,3 +9,4 @@
     <p><?=$user->tel?></p>
     <p><?=$user->role?></p>
 
+<a href="?c=user&a=update&id=<?=$user->id?>">Edit User</a>
