@@ -11,7 +11,6 @@
 <body>
 <ul>
     <li><a href="?c=user&a=all">Users</a></li>
-    <li><a href="?c=user&a=one&id=17">User 17</a></li>
     <li><a href="?c=good&a=all">Goods</a></li>
 </ul>
 <div class="content">

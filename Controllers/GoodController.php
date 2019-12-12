@@ -21,5 +21,5 @@ class GoodController extends Controller
         $good = $oGood->getOne($_GET['id']);
         return $this->render('good', ['good' => $good]);
     }
-    
+
 }
