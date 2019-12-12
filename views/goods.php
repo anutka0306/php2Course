@@ -1,4 +1,4 @@
-<p>goods***</p>
+
 <?php
 /**
  * @var App\modules\Good [] $goods
