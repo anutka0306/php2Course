@@ -5,10 +5,17 @@ namespace App\Controllers;
 
 
 use App\modules\User;
+use App\services\renders\TmplRender;
 
 abstract class Controller
 {
     protected $defaultAction = 'all';
+    protected $render;
+
+    public function __construct()
+    {
+        $this->render = new TmplRender();
+    }
 
     public function run($action){
         if(empty($action)){
@@ -21,24 +28,8 @@ abstract class Controller
         return '404';
     }
 
-
-    public function render($template, $params = []){
-        $content = $this->renderTmpl($template, $params);
-        return $this->renderTmpl(
-          'layouts/main',
-            ['content'=>$content]
-        );
+    protected function render($template, $params = []){
+        return $this->render->render($template, $params);
     }
 
-    /**
-     * @param $template
-     * @param array $params ["users"=>123, "tr"=>[1,5,6]]
-     * @return false|string;
-     */
-    public function renderTmpl($template, $params = []){
-        ob_start();
-        extract($params);
-        include dirname(__DIR__) . '/views/' . $template . '.php';
-        return ob_get_clean();
-    }
 }
