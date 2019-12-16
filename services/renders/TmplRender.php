@@ -4,7 +4,7 @@
 namespace App\services\renders;
 
 
-class TmplRender
+class TmplRender implements IRender
 {
     public function render($template, $params = []){
         $content = $this->renderTmpl($template, $params);

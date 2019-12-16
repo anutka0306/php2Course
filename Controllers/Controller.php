@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 
 use App\modules\User;
+use App\services\renders\IRender;
 use App\services\renders\TmplRender;
 
 abstract class Controller
@@ -12,9 +13,9 @@ abstract class Controller
     protected $defaultAction = 'all';
     protected $render;
 
-    public function __construct()
+    public function __construct(IRender $render)
     {
-        $this->render = new TmplRender();
+        $this->render = $render;
     }
 
     public function run($action){
