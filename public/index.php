@@ -5,8 +5,8 @@ use App\modules\Orders;
 use App\services\renders\TmplRender;
 
 include dirname(__DIR__).'/vendor/autoload.php';
-include dirname(__DIR__).'/services/Autoload.php';
-spl_autoload_register([new Autoload(), 'loadClass']);
+//include dirname(__DIR__).'/services/Autoload.php';
+//spl_autoload_register([new Autoload(), 'loadClass']);
 
 new \Twig\Loader\FilesystemLoader();
 
