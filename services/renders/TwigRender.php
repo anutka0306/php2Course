@@ -5,6 +5,9 @@ namespace App\services\renders;
 
 
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
 class TwigRender implements IRender
@@ -29,13 +32,14 @@ class TwigRender implements IRender
 
     /**
      * @param $template
-     * @param array $params ["users"=>123, "tr"=>[1,5,6]]
-     * @return false|string;
+     * @param array $params
+     * @return string
+     * @throws LoaderError
+     * @throws SyntaxError
+     * @throws RuntimeError
      */
     public function renderTmpl($template, $params = []){
-        ob_start();
-        extract($params);
-        include dirname(dirname(__DIR__)) . '/views/' . $template . '.php';
-        return ob_get_clean();
+        $template .= '.twig';
+        return $this->twig->render($template, $params);
     }
 }

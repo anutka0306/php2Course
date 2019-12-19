@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use App\modules\User;
 use App\services\renders\IRender;
-use App\services\renders\TmplRender;
+use App\services\renders\TwigRender;
 
 abstract class Controller
 {
