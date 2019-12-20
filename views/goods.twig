@@ -1,0 +1,13 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+<div class="catalog_wrap">
+{% for good in goods %}
+    <div class="catalog_item">
+        <h3><a href="?c=good&a=one&id={{good.id}}">{{good.name}}</a></h3>
+        <a href="?c=good&a=one&id={{good.id}}">
+            <img src="../{{good.image}}" alt="{{good.description}}" class="catalog_item-img">
+        </a>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

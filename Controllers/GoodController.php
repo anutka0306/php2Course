@@ -13,13 +13,19 @@ class GoodController extends Controller
 
     public function allAction(){
         $goods = (new Good())->getAll();
-        return $this->render('goods', ['goods'=>$goods]);
+        return $this->render('goods', [
+            'goods'=>$goods,
+            'title'=>'Все товары'
+        ]);
     }
 
     public function oneAction(){
         $oGood = new Good();
         $good = $oGood->getOne($_GET['id']);
-        return $this->render('good', ['good' => $good]);
+        return $this->render('good', [
+            'good' => $good,
+            'title'=>'Один товар'
+        ]);
     }
 
 }

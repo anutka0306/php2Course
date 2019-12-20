@@ -23,11 +23,8 @@ class TwigRender implements IRender
     }
 
     public function render($template, $params = []){
-        $content = $this->renderTmpl($template, $params);
-        return $this->renderTmpl(
-            'layouts/main',
-            ['content'=>$content]
-        );
+        $template .= '.twig';
+        return $this->twig->render($template, $params);
     }
 
     /**
@@ -39,7 +36,6 @@ class TwigRender implements IRender
      * @throws RuntimeError
      */
     public function renderTmpl($template, $params = []){
-        $template .= '.twig';
-        return $this->twig->render($template, $params);
+
     }
 }
