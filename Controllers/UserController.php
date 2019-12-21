@@ -38,14 +38,14 @@ class UserController extends Controller
             $user->tel = $_POST['tel'];
             $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $user->save();
-            return header('Location: ?c=user');
+            return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         return $this->render('userAdd');
     }
 
     public function updateAction(){
         if(empty($_GET['id'])){
-            return header('Location: ?c=user');
+            return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         $user = (new User())->getOne($_GET['id']);
 
@@ -60,6 +60,16 @@ class UserController extends Controller
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         return $this->render('userUpdate', ['user' => $user]);
+    }
+
+    public function deleteAction(){
+        echo "delete action";
+        if(empty($_GET['id'])){
+            return header('Location: /php2Course/lesson5/php2Course/public/user/');
+        }
+        $user = (new User())->getOne($_GET['id']);
+        $user->delete($user->id);
+        return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
 
 }

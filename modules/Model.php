@@ -70,10 +70,10 @@ abstract class Model
         ($id) ? $this->update($id) : $this->insert();
     }
 
-    public function delete(){
+    public function delete($id){
         $tableName = $this->getTableName();
         $sql = "DELETE FROM {$tableName} WHERE id= :id";
-        $this->db->exec($sql, [':id' => $this->id]);
+        $this->db->exec($sql, [':id' => $id]);
     }
 
     public function getData(){
