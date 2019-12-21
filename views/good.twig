@@ -3,12 +3,12 @@
 
 <br>
 <hr>
-<a class="back__btn" href="?c=good&a=all">В Каталог</a>
+<a class="back__btn" href="/php2Course/lesson5/php2Course/public/good/">В Каталог</a>
 <hr>
 <div class="good__card">
     <div class="good__card_left">
         <h2>{{ good.name }}</h2>
-        <img src="../{{good.image}}" alt="{{good.description}}" class="good__card-img">
+        <img src="/php2Course/lesson5/php2Course/{{good.image}}" alt="{{good.description}}" class="good__card-img">
         <h3>{{good.price}} RUB.</h3>
     </div>
     <div class="good__card_right">
@@ -17,6 +17,6 @@
         </p>
     </div>
 </div>
-<a class="back__btn" href="?c=good&a=all">В Каталог</a>
+<a class="back__btn" href="/php2Course/lesson5/php2Course/public/good/">В Каталог</a>
 
 {% endblock %}

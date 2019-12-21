@@ -21,7 +21,8 @@ class GoodController extends Controller
 
     public function oneAction(){
         $oGood = new Good();
-        $good = $oGood->getOne($_GET['id']);
+        $id = $this->request->get('id');
+        $good = $oGood->getOne($id);
         return $this->render('good', [
             'good' => $good,
             'title'=>'Один товар'

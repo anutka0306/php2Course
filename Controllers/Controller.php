@@ -7,15 +7,18 @@ namespace App\Controllers;
 use App\modules\User;
 use App\services\renders\IRender;
 use App\services\renders\TwigRender;
+use App\services\Request;
 
 abstract class Controller
 {
     protected $defaultAction = 'all';
     protected $render;
+    protected $request;
 
-    public function __construct(IRender $render)
+    public function __construct(IRender $render, Request $request)
     {
         $this->render = $render;
+        $this->request = $request;
     }
 
     public function run($action){

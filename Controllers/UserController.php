@@ -21,7 +21,8 @@ class UserController extends Controller
 
     public function oneAction(){
         $oUser = new User();
-        $user = $oUser->getOne($_GET['id']);
+        $id = $this->request->get('id');
+        $user = $oUser->getOne($id);
         return $this->render('user', [
             'user' => $user,
             'title'=>'Один пользователь'
@@ -56,7 +57,7 @@ class UserController extends Controller
             $user->tel = $_POST['tel'];
             $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $user->save($user->id);
-            return header('Location: ?c=user');
+            return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         return $this->render('userUpdate', ['user' => $user]);
     }

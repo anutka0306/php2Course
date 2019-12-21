@@ -1,10 +1,10 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-<a href="?c=user&a=add">Добавить пользователя</a>
+<a href="/php2Course/lesson5/php2Course/public/user/add">Добавить пользователя</a>
 
 {% for user in users %}
 <h1>
-<a href="?c=user&a=one&id={{user.id}}">
+<a href="/php2Course/lesson5/php2Course/public/user/one?id={{user.id}}">
     {{user.login}}
 </a></h1>
 {% else %}
