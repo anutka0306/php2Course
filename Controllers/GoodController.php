@@ -45,6 +45,25 @@ class GoodController extends Controller
         return $this->render('goodAdd');
     }
 
+    public function updateAction(){
+        if(empty($this->request->get('id'))){
+            return header('Location: /php2Course/lesson5/php2Course/public/good/');
+        }
+        $id = $this->request->get('id');
+        $good = (new Good())->getOne($id);
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $good->id = $_POST['id'];
+            $good->name = $_POST['name'];
+            $good->description = $_POST['description'];
+            $good->price = $_POST['price'];
+            $good->image = $this->getImage();
+            $good->save($good->id);
+            return header('Location: /php2Course/lesson5/php2Course/public/good/');
+        }
+        return $this->render('goodUpdate', ['good' => $good]);
+    }
+
     public function getImage(){
         $php_errors = array(1 => 'Превышен мах. размер файла, указанный в php.ini',
             2 => 'Превышенм мах. размер файла, указанный в форме html',

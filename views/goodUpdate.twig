@@ -1,0 +1,18 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <h2>Изменение товара</h2>
+    <form action="update?id={{ good.id }}" method="post" enctype="multipart/form-data">
+        <fieldset class="fieldset">
+            <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+            <input type="hidden" name="old-image" value="{{ good.image }}">
+            <label for="user_pic">Загрузить изображение товара:</label>
+            <input type="file" name="user_pic" size="30">
+        </fieldset>
+        <input type="hidden" name="id" value="{{ good.id }}">
+        Name <input type="text" name="name" value="{{ good.name }}"><br>
+        Description <input type="text" name="description" value="{{ good.description }}"><br>
+        Category <input type="number" name="category" value="{{ good.category }}"><br>
+        Price <input type="number" name="price" value="{{ good.price }}"><br>
+        <input type="submit" value="Send">
+    </form>
+{% endblock %}

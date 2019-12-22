@@ -44,23 +44,23 @@ class UserController extends Controller
     }
 
     public function updateAction(){
-        if(empty($_GET['id'])){
-            return header('Location: /php2Course/lesson5/php2Course/public/user/');
-        }
-        $user = (new User())->getOne($_GET['id']);
-
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $user->id = $_POST['id'];
-            $user->login = $_POST['login'];
-            $user->name = $_POST['name'];
-            $user->role = $_POST['role'];
-            $user->tel = $_POST['tel'];
-            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user->save($user->id);
-            return header('Location: /php2Course/lesson5/php2Course/public/user/');
-        }
-        return $this->render('userUpdate', ['user' => $user]);
+    if(empty($_GET['id'])){
+        return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
+    $user = (new User())->getOne($_GET['id']);
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $user->id = $_POST['id'];
+        $user->login = $_POST['login'];
+        $user->name = $_POST['name'];
+        $user->role = $_POST['role'];
+        $user->tel = $_POST['tel'];
+        $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $user->save($user->id);
+        return header('Location: /php2Course/lesson5/php2Course/public/user/');
+    }
+    return $this->render('userUpdate', ['user' => $user]);
+}
 
     public function deleteAction(){
         echo "delete action";
