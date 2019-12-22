@@ -44,10 +44,11 @@ class UserController extends Controller
     }
 
     public function updateAction(){
-    if(empty($_GET['id'])){
+    if(empty($this->request->get('id'))){
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
-    $user = (new User())->getOne($_GET['id']);
+    $id = $this->request->get('id');
+    $user = (new User())->getOne($id);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user->id = $_POST['id'];

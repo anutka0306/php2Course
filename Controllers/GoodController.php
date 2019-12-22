@@ -70,9 +70,9 @@ class GoodController extends Controller
             3 => 'Была отправлена только часть файла',
             4 => 'Файл для отправки не был выбран');
 
-        $upload_dir = "upload/";
-        $image_fildname = "user_pic";
-        if($_FILES[$image_fildname]['name']) {
+            $upload_dir = "upload/";
+            $image_fildname = "user_pic";
+            if($_FILES[$image_fildname]['name']) {
             $_FILES[$image_fildname]['error'] == 0
             or die($php_errors[$_FILES[$image_fildname]['error']]);
             @getimagesize($_FILES[$image_fildname]['tmp_name'])
@@ -87,5 +87,15 @@ class GoodController extends Controller
             $image_name = $_POST['old-image'];
         }
         return $image_name;
+    }
+
+    public function deleteAction(){
+        $id = $this->request->get('id');
+        if(empty($id)){
+            return header('Location: /php2Course/lesson5/php2Course/public/good/');
+        }
+        $good = (new Good())->getOne($id);
+        $good->delete($good->id);
+        return header('Location: /php2Course/lesson5/php2Course/public/good/');
     }
 }
