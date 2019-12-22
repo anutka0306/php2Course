@@ -1,11 +1,12 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
+    <a href="/php2Course/lesson5/php2Course/public/good/add">Добавить товар</a>
 <div class="catalog_wrap">
 {% for good in goods %}
     <div class="catalog_item">
         <h3><a href="/php2Course/lesson5/php2Course/public/good/one?id={{good.id}}">{{good.name}}</a></h3>
         <a href="/php2Course/lesson5/php2Course/public/good/one?id={{good.id}}">
-            <img src="../../{{good.image}}" alt="{{good.description}}" class="catalog_item-img">
+            <img src="../{{good.image}}" alt="{{good.description}}" class="catalog_item-img">
         </a>
     </div>
 {% endfor %}
