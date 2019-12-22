@@ -21,8 +21,7 @@ class UserController extends Controller
 
     public function oneAction(){
         $oUser = new User();
-        $id = $this->request->get('id');
-        $user = $oUser->getOne($id);
+        $user = $oUser->getOne($this->getId());
         return $this->render('user', [
             'user' => $user,
             'title'=>'Один пользователь'
@@ -44,11 +43,10 @@ class UserController extends Controller
     }
 
     public function updateAction(){
-    if(empty($this->request->get('id'))){
+    if(empty($this->getId())){
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
-    $id = $this->request->get('id');
-    $user = (new User())->getOne($id);
+    $user = (new User())->getOne($this->getId());
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user->id = $_POST['id'];
@@ -64,11 +62,10 @@ class UserController extends Controller
 }
 
     public function deleteAction(){
-        echo "delete action";
-        if(empty($_GET['id'])){
+        if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
-        $user = (new User())->getOne($_GET['id']);
+        $user = (new User())->getOne($this->getId());
         $user->delete($user->id);
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }

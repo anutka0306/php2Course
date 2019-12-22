@@ -36,4 +36,8 @@ abstract class Controller
         return $this->render->render($template, $params);
     }
 
+    protected function getId(){
+        return $this->request->get('id');
+    }
+
 }

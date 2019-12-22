@@ -21,8 +21,7 @@ class GoodController extends Controller
 
     public function oneAction(){
         $oGood = new Good();
-        $id = $this->request->get('id');
-        $good = $oGood->getOne($id);
+        $good = $oGood->getOne($this->getId());
         return $this->render('good', [
             'good' => $good,
             'title'=>'Один товар'
@@ -46,11 +45,10 @@ class GoodController extends Controller
     }
 
     public function updateAction(){
-        if(empty($this->request->get('id'))){
+        if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
         }
-        $id = $this->request->get('id');
-        $good = (new Good())->getOne($id);
+        $good = (new Good())->getOne($this->getId());
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $good->id = $_POST['id'];
@@ -90,11 +88,10 @@ class GoodController extends Controller
     }
 
     public function deleteAction(){
-        $id = $this->request->get('id');
-        if(empty($id)){
+        if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
         }
-        $good = (new Good())->getOne($id);
+        $good = (new Good())->getOne($this->getId());
         $good->delete($good->id);
         return header('Location: /php2Course/lesson5/php2Course/public/good/');
     }
