@@ -41,16 +41,10 @@ class UserController extends Controller
     if(empty($this->getId())){
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
-    $user = (new User())->getOne($this->getId());
+    $user = (new UserRepository())->getOne($this->getId());
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $user->id = $_POST['id'];
-        $user->login = $_POST['login'];
-        $user->name = $_POST['name'];
-        $user->role = $_POST['role'];
-        $user->tel = $_POST['tel'];
-        $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $user->save($user->id);
+        (new UserService())->fillUser($this->request->post(), $user);
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
     return $this->render('userUpdate', ['user' => $user]);

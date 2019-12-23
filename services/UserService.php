@@ -9,7 +9,7 @@ use App\repositories\UserRepository;
 
 class UserService
 {
-    public function fillUser($params)
+    public function fillUser($params, $user = null)
     {
         if($this->hasErrors($params)){
             return [
@@ -17,7 +17,11 @@ class UserService
               'success'=> false,
             ];
         }
-        $user = new User();
+
+        if(empty($user)){
+            $user = new User();
+        }
+        
         $user->login = $params['login'];
         $user->name = $params['name'];
         $user->role = $params['role'];
