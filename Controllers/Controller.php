@@ -37,7 +37,7 @@ abstract class Controller
     }
 
     protected function getId(){
-        return $this->request->get('id');
+        return (int)$this->request->get('id');
     }
 
 }

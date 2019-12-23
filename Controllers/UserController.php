@@ -5,6 +5,8 @@ namespace App\Controllers;
 
 
 use App\modules\User;
+use App\repositories\UserRepository;
+use App\services\UserService;
 
 class UserController extends Controller
 {
@@ -12,31 +14,24 @@ class UserController extends Controller
 
 
     public function allAction(){
-        $users = (new User())->getAll();
+
         return $this->render('users', [
-            'users'=>$users,
+            'users'=>(new UserRepository())->getAll(),
             'title'=>'Все пользователи'
         ]);
     }
 
     public function oneAction(){
-        $oUser = new User();
-        $user = $oUser->getOne($this->getId());
+
         return $this->render('user', [
-            'user' => $user,
+            'user' => (new UserRepository())->getOne($this->getId()),
             'title'=>'Один пользователь'
         ]);
     }
 
     public function addAction(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $user = new User();
-            $user->login = $_POST['login'];
-            $user->name = $_POST['name'];
-            $user->role = $_POST['role'];
-            $user->tel = $_POST['tel'];
-            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user->save();
+            (new UserService())->fillUser($this->request->post());
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         return $this->render('userAdd');

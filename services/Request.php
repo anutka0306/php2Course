@@ -40,6 +40,16 @@ class Request
         return array();
     }
 
+    public function post($params = ''){
+        if(empty($params)){
+            return $this->params['post'];
+        }
+        if(!empty($this->params['post'][$params])){
+            return $this->params['post'][$params];
+        }
+        return array();
+    }
+
 
     /**
      * @return mixed
