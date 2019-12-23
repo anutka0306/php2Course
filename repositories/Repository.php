@@ -86,10 +86,10 @@ abstract class Repository
         ($entity->id) ? $this->update($entity) : $this->insert($entity);
     }
 
-    public function delete(Entity $entity){
+    public function delete($id){
         $tableName = $this->getTableName();
         $sql = "DELETE FROM {$tableName} WHERE id= :id";
-        $this->db->exec($sql, [':id' => $entity->id]);
+        return $this->db->queryObject($sql, $this->getEntityClass(), [':id' => $id]);
     }
 
 

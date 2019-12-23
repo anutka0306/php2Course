@@ -54,8 +54,8 @@ class UserController extends Controller
         if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
-        $user = (new User())->getOne($this->getId());
-        $user->delete($user->id);
+        $user = (new UserRepository())->getOne($this->getId());
+        (new UserRepository())->delete($user->id);
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
 
