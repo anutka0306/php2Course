@@ -23,5 +23,9 @@ return [
         'userRepository' => [
           'class' => \App\repositories\UserRepository::class,
         ],
+
+        'userService' => [
+            'class' => \App\services\UserService::class,
+        ],
     ],
 ];

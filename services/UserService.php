@@ -5,7 +5,7 @@ namespace App\services;
 
 
 use App\entities\User;
-use App\repositories\UserRepository;
+use App\main\App;
 
 class UserService
 {
@@ -21,13 +21,13 @@ class UserService
         if(empty($user)){
             $user = new User();
         }
-        
+
         $user->login = $params['login'];
         $user->name = $params['name'];
         $user->role = $params['role'];
         $user->tel = $params['tel'];
         $user->password = password_hash($params['password'], PASSWORD_DEFAULT);
-        (new UserRepository())->save($user);
+        App::call()->userRepository->save($user);
         return [
             'msg'=>'Пользователь сохранен',
             'success'=> true,

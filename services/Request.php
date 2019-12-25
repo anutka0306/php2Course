@@ -14,6 +14,7 @@ class Request
 
     public function __construct()
     {
+        session_start();
         $this->requestString = $_SERVER['REQUEST_URI'];
         $this->params = [
             'get'=> $_GET,

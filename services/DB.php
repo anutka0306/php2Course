@@ -5,17 +5,13 @@ use App\traits\TSingleton;
 
 class DB implements IDB
 {
-    use TSingleton;
     use TCalcRows;
 
-    private  $config =[
-      'driver'=>'mysql',
-      'host'=>'localhost',
-      'db'=>'catalogl6',
-       'charset'=>'UTF8',
-       'username'=>'root',
-       'password'=>'root'
-    ];
+    private  $config =[];
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
 
 
     protected $connect;

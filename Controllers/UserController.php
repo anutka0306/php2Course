@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 
+use App\main\App;
 use App\modules\User;
 use App\repositories\UserRepository;
 use App\services\UserService;
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function allAction(){
 
         return $this->render('users', [
-            'users'=>(new UserRepository())->getAll(),
+            'users'=>App::call()->userRepository->getAll(),
             'title'=>'Все пользователи'
         ]);
     }
@@ -24,14 +25,14 @@ class UserController extends Controller
     public function oneAction(){
 
         return $this->render('user', [
-            'user' => (new UserRepository())->getOne($this->getId()),
+            'user' => App::call()->userRepository->getOne($this->getId()),
             'title'=>'Один пользователь'
         ]);
     }
 
     public function addAction(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            (new UserService())->fillUser($this->request->post());
+            App::call()->userService->fillUser($this->request->post());
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
         return $this->render('userAdd');
@@ -41,10 +42,10 @@ class UserController extends Controller
     if(empty($this->getId())){
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
-    $user = (new UserRepository())->getOne($this->getId());
+    $user = App::call()->userRepository->getOne($this->getId());
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        (new UserService())->fillUser($this->request->post(), $user);
+        App::call()->userService->fillUser($this->request->post(), $user);
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
     return $this->render('userUpdate', ['user' => $user]);
@@ -54,8 +55,8 @@ class UserController extends Controller
         if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/user/');
         }
-        $user = (new UserRepository())->getOne($this->getId());
-        (new UserRepository())->delete($user->id);
+        $user = App::call()->userRepository->getOne($this->getId());
+        App::call()->userRepository->delete($user->id);
         return header('Location: /php2Course/lesson5/php2Course/public/user/');
     }
 

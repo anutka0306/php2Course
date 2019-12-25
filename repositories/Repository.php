@@ -5,6 +5,7 @@ namespace App\repositories;
 
 
 use App\entities\Entity;
+use App\main\App;
 use App\services\DB;
 
 abstract class Repository
@@ -13,7 +14,7 @@ abstract class Repository
 
     public function __construct()
     {
-        $this->db = DB::getInstance();
+        $this->db = App::call()->db;
     }
 
     abstract public function getTableName(): string;
