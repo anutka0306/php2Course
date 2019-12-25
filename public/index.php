@@ -5,16 +5,10 @@ use App\modules\Orders;
 use App\services\renders\TmplRender;
 use App\services\renders\TwigRender;
 
+session_start();
 include dirname(__DIR__).'/vendor/autoload.php';
+$config = include dirname(__DIR__).'/main/config.php';
 
-$request = new \App\services\Request();
-new \Twig\Loader\FilesystemLoader();
+(new \App\main\App())->run($config);
 
-$controllerName =  $request->getControllerName() ?: $controllerName = 'user';
-$actionName = $request->getActionName();
-$controllerClass = 'App\\Controllers\\'. ucfirst($controllerName).'Controller';
 
-if(class_exists($controllerClass)){
-    $controller = new $controllerClass(new TwigRender(), $request);
-    echo $controller->run($actionName);
-}

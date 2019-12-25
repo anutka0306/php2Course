@@ -19,9 +19,7 @@ return [
         'render' => [
           'class' => \App\services\renders\TwigRender::class,
         ],
-        'request' => [
-          'class' => \App\services\Request::class,
-        ],
+
         'userRepository' => [
           'class' => \App\repositories\UserRepository::class,
         ],
