@@ -4,7 +4,7 @@
 namespace App\Controllers;
 
 
-use App\modules\Good;
+use App\main\App;
 
 class GoodController extends Controller
 {
@@ -12,18 +12,15 @@ class GoodController extends Controller
 
 
     public function allAction(){
-        $goods = (new Good())->getAll();
         return $this->render('goods', [
-            'goods'=>$goods,
+            'goods'=>App::call()->goodRepository->getAll(),
             'title'=>'Все товары'
         ]);
     }
 
     public function oneAction(){
-        $oGood = new Good();
-        $good = $oGood->getOne($this->getId());
         return $this->render('good', [
-            'good' => $good,
+            'good' => App::call()->goodRepository->getOne($this->getId()),
             'title'=>'Один товар'
         ]);
     }
