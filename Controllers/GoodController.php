@@ -79,8 +79,8 @@ class GoodController extends Controller
         if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
         }
-        $good = (new Good())->getOne($this->getId());
-        $good->delete($good->id);
+        $good = App::call()->goodRepository->getOne($this->getId());
+        App::call()->goodRepository->delete($good->id);
         return header('Location: /php2Course/lesson5/php2Course/public/good/');
     }
 }
