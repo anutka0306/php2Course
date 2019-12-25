@@ -40,15 +40,11 @@ class GoodController extends Controller
         if(empty($this->getId())){
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
         }
-        $good = (new Good())->getOne($this->getId());
+        $good = App::call()->goodRepository->getOne($this->getId());
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $good->id = $_POST['id'];
-            $good->name = $_POST['name'];
-            $good->description = $_POST['description'];
-            $good->price = $_POST['price'];
-            $good->image = $this->getImage();
-            $good->save($good->id);
+            $image = $this->getImage();
+            App::call()->goodService->fillGood($this->request->post(), $image, $good);
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
         }
         return $this->render('goodUpdate', ['good' => $good]);
