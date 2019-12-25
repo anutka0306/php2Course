@@ -5,6 +5,8 @@ namespace App\Controllers;
 
 
 use App\main\App;
+use App\repositories\UserRepository;
+use App\services\UserService;
 
 class GoodController extends Controller
 {
@@ -27,16 +29,9 @@ class GoodController extends Controller
 
     public function addAction(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $good = new Good();
-            $good->name = $_POST['name'];
-            $good->description = $_POST['description'];
-            $good->category = $_POST['category'];
-            $good->image = $this->getImage();
-            $good->price = $_POST['price'];
-            $good->save();
+            $image = $this->getImage();
+            App::call()->goodService->fillGood($this->request->post(), $image);
             return header('Location: /php2Course/lesson5/php2Course/public/good/');
-           // var_dump($good);
-           // var_dump($_FILES);
         }
         return $this->render('goodAdd');
     }

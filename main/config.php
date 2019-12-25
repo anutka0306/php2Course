@@ -31,5 +31,9 @@ return [
         'goodRepository' => [
             'class' => \App\repositories\GoodRepository::class,
         ],
+
+        'goodService' => [
+            'class' => \App\services\GoodService::class,
+        ],
     ],
 ];
