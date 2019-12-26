@@ -26,6 +26,7 @@ class AuthService
            return [
                'msg' => 'Пользователь сохранен',
                'success' => true,
+               'role' => $user->role,
            ];
        }else{
            return [
