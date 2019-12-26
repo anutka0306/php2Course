@@ -34,10 +34,23 @@ class GoodController extends Controller
     }
 
     public function oneAction(){
-        return $this->render('good', [
-            'good' => App::call()->goodRepository->getOne($this->getId()),
-            'title'=>'Один товар'
-        ]);
+        if(empty($this->request->session('authUser')->role)){
+            $role = 0;
+        }
+        else{
+            $role = $this->request->session('authUser')->role;
+        }
+        if($role == 2) {
+            return $this->render('admin/good', [
+                'good' => App::call()->goodRepository->getOne($this->getId()),
+                'title' => 'Один товар'
+            ]);
+        }else{
+            return $this->render('good', [
+                'good' => App::call()->goodRepository->getOne($this->getId()),
+                'title' => 'Один товар'
+            ]);
+        }
     }
 
     public function addAction(){
