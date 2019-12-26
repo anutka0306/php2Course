@@ -12,9 +12,8 @@ class OrderController extends Controller
 
 
     public function allAction(){
-        //session_unset();
        $goods = $this->request->session('goods');
-        var_dump($goods);
+       var_dump($goods);
         return $this->render('cart', [
             'goods'=> $goods,
             'title'=>'Товары в корзине'

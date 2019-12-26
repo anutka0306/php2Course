@@ -19,14 +19,5 @@ class OrderRepository extends Repository
         return Order::class;
     }
 
-    public function getCartAll($cart = null)
-    {
-        if(!empty($cart)){
-           // var_dump($cart);
-            return $cart;
-        }
-        else{
-            echo "Корзина Пуста";
-        }
-    }
+
 }

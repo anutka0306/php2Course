@@ -26,7 +26,7 @@ class UserService
         $user->name = $params['name'];
         $user->role = $params['role'];
         $user->tel = $params['tel'];
-        $user->password = password_hash($params['password'], PASSWORD_DEFAULT);
+        $user->password = md5($params['password']);
         App::call()->userRepository->save($user);
         return [
             'msg'=>'Пользователь сохранен',

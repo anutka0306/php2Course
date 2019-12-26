@@ -43,5 +43,13 @@ return [
         'orderService' => [
             'class' => \App\services\OrderService::class,
         ],
+
+        'authRepository' => [
+            'class' => \App\repositories\AuthRepository::class,
+        ],
+
+        'authService' => [
+            'class' => \App\services\AuthService::class,
+        ],
     ],
 ];

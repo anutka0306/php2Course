@@ -1,7 +1,9 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
     <div class="catalog_wrap">
-
+        {% if goods == false %}
+        <h3>Корзина пуста</h3>
+        {% endif %}
         {% for item in goods %}
             <div class="catalog_item">
                 <p>{{ item.good.name }}</p>
