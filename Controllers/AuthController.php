@@ -19,7 +19,7 @@ class AuthController extends Controller
                 if($role == 2) {
                     return $this->render->render('admin/adminIndex');
                 }else{
-                    return header('Location: /php2Course/lesson5/php2Course/public/admin');
+                    return $this->render->render('admin/index');;
                 }
             }else{
                 echo $verificationStatus['msg'];

@@ -14,6 +14,7 @@ abstract class Controller
     protected $defaultAction = 'all';
     protected $render;
     protected $request;
+    protected $defaultRole = 0;
 
     public function __construct(IRender $render, Request $request)
     {
@@ -39,5 +40,6 @@ abstract class Controller
     protected function getId(){
         return (int)$this->request->get('id');
     }
+
 
 }

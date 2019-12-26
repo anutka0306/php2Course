@@ -12,17 +12,27 @@ use App\services\UserService;
 class UserController extends Controller
 {
     protected $defaultAction = 'all';
-
+    protected $defaultRole = 0;
 
     public function allAction(){
+        if(empty($this->request->session('authUser')->role)){
+            $role = 0;
+        }
+        else{
+            $role = $this->request->session('authUser')->role;
+        }
+       if($role == 2){
+           return $this->render('users', [
+               'users'=>App::call()->userRepository->getAll(),
+               'title'=>'Все пользователи'
+           ]);
+       }else{
+           echo "Доступ закрыт";
+       }
 
-        return $this->render('users', [
-            'users'=>App::call()->userRepository->getAll(),
-            'title'=>'Все пользователи'
-        ]);
     }
 
-    public function oneAction(){
+        public function oneAction(){
 
         return $this->render('user', [
             'user' => App::call()->userRepository->getOne($this->getId()),

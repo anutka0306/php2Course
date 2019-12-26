@@ -2,7 +2,7 @@
 
 return [
     'name' => 'My Shop',
-    'defaultController' => 'user',
+    'defaultController' => 'good',
 
     'components' => [
         'db' => [

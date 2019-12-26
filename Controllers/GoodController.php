@@ -14,10 +14,23 @@ class GoodController extends Controller
 
 
     public function allAction(){
-        return $this->render('goods', [
-            'goods'=>App::call()->goodRepository->getAll(),
-            'title'=>'Все товары'
-        ]);
+        if(empty($this->request->session('authUser')->role)){
+            $role = 0;
+        }
+        else{
+            $role = $this->request->session('authUser')->role;
+        }
+        if($role == 2) {
+            return $this->render('admin/goods', [
+                'goods' => App::call()->goodRepository->getAll(),
+                'title' => 'Все товары'
+            ]);
+        }else{
+            return $this->render('goods', [
+                'goods' => App::call()->goodRepository->getAll(),
+                'title' => 'Все товары'
+            ]);
+        }
     }
 
     public function oneAction(){

@@ -35,7 +35,7 @@ class App
         $request = new \App\services\Request();
         new \Twig\Loader\FilesystemLoader();
 
-        $controllerName =  $request->getControllerName() ?: $controllerName = 'user';
+        $controllerName =  $request->getControllerName() ?: $controllerName = 'good';
         $actionName = $request->getActionName();
         $controllerClass = 'App\\Controllers\\'. ucfirst($controllerName).'Controller';
 
