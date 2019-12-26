@@ -1,8 +1,6 @@
 
 <?php
-/**
- * @var App\modules\Good [] $goods
- */
+
 ?>
 <div class="catalog_wrap">
 <?php

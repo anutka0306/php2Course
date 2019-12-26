@@ -9,13 +9,22 @@ use App\main\App;
 
 class OrderService
 {
-    public function fillSession($id = null, $obj = null)
+    public function fillSession($id = null, $obj = null, $act)
     {
-        if(isset($_SESSION['goods'][$id])){
-            $_SESSION['goods'][$id]['quantity'] += 1;
-        }else {
-            $_SESSION['goods'][$id]['good'] = $obj;
-            $_SESSION['goods'][$id]['quantity'] = 1;
+        if($act == 'add') {
+            if (isset($_SESSION['goods'][$id])) {
+                $_SESSION['goods'][$id]['quantity'] += 1;
+            } else {
+                $_SESSION['goods'][$id]['good'] = $obj;
+                $_SESSION['goods'][$id]['quantity'] = 1;
+            }
+        }
+        elseif ($act == 'del'){
+            if ($_SESSION['goods'][$id]['quantity'] == 1) {
+                unset($_SESSION['goods'][$id]);
+            } else {
+                $_SESSION['goods'][$id]['quantity'] -= 1;
+            }
         }
     }
 

@@ -1,0 +1,17 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="catalog_wrap">
+
+        {% for item in goods %}
+            <div class="catalog_item">
+                <p>{{ item.good.name }}</p>
+                <p>Количество: {{ item.quantity }}</p>
+                <p>{{ item.good.description }}</p>
+                <p>Цена: {{ item.good.price }} РУБ.</p>
+                <img src="../{{ item.good.image }}"/>
+            </div>
+            <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/add?id={{ item.good.id }}&inCart=true">+</a>
+            <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/delete?id={{ item.good.id }}">-</a>
+        {% endfor %}
+    </div>
+{% endblock %}
