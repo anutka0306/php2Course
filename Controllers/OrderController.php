@@ -12,7 +12,8 @@ class OrderController extends Controller
 
 
     public function allAction(){
-        var_dump($_SESSION['goods']);
+        var_dump($this->request->session('goods'));
+        //session_unset();
     }
 
     public function oneAction(){
@@ -25,7 +26,9 @@ class OrderController extends Controller
     public function addAction()
     {
         $id = $this->getId();
-        $_SESSION['goods'][$id] = App::call()->goodRepository->getOne($id);
+        //$_SESSION['goods'][$id] = App::call()->goodRepository->getOne($id);
+        App::call()->orderService->fillSession($id, App::call()->goodRepository->getOne($id));
+
         return header('Location:/php2Course/lesson5/php2Course/public/good/');
     }
 }

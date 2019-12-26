@@ -20,6 +20,11 @@ class Request
             'get'=> $_GET,
             'post' => $_POST,
         ];
+
+        $this->session = [
+          'session' => $_SESSION,
+        ];
+
         $this->parseRequest();
     }
 
@@ -42,11 +47,22 @@ class Request
     }
 
     public function post($params = ''){
-        if(empty($params)){
-            return $this->params['post'];
+    if(empty($params)){
+        return $this->params['post'];
+    }
+    if(!empty($this->params['post'][$params])){
+        return $this->params['post'][$params];
+    }
+    return array();
+}
+
+    public function session($session = ''){
+        if(empty($session)){
+          return $this->session['session'];
         }
-        if(!empty($this->params['post'][$params])){
-            return $this->params['post'][$params];
+
+        if(!empty($this->session['session'][$session])){
+            return $this->session['session'][$session];
         }
         return array();
     }

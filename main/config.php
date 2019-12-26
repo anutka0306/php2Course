@@ -35,5 +35,13 @@ return [
         'goodService' => [
             'class' => \App\services\GoodService::class,
         ],
+
+        'orderRepository' => [
+            'class' => \App\repositories\OrderRepository::class,
+        ],
+
+        'orderService' => [
+            'class' => \App\services\OrderService::class,
+        ],
     ],
 ];
