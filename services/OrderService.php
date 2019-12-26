@@ -5,7 +5,10 @@ namespace App\services;
 
 
 use App\entities\Good;
+use App\entities\Order;
+use App\entities\OrderList;
 use App\main\App;
+use App\services\DB;
 
 class OrderService
 {
@@ -26,6 +29,32 @@ class OrderService
                 $_SESSION['goods'][$id]['quantity'] -= 1;
             }
         }
+    }
+
+    public function fillOrder($userId, $goods, $order = null)
+    {
+        if(empty($order)){
+            $order = new Order();
+            $order->status_id = 0;
+        }
+        $order->user_id = $userId;
+        App::call()->orderRepository->save($order);
+       $order_id = App::call()->orderRepository->getInsertedId();
+
+       $orderList = new OrderList();
+       foreach ($goods as $good){
+           var_dump($orderList->order_id);
+           $orderList->order_id = $order_id;
+           $orderList->good_id = $good['good']->id;
+           $orderList->quantity = $good['quantity'];
+           App::call()->orderRepository->insertSub($orderList);
+       }
+        unset($_SESSION['goods']);
+        return [
+            'msg'=>'Заказ сохранен',
+            'success'=> true,
+        ];
+
     }
 
     /*public function fillGood($params, $image, $good = null)

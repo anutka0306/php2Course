@@ -84,6 +84,7 @@ abstract class Repository
     }
 
     public function save(Entity $entity){
+        var_dump($entity);
         ($entity->id) ? $this->update($entity) : $this->insert($entity);
     }
 

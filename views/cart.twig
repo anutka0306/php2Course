@@ -1,9 +1,7 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
     <div class="catalog_wrap">
-        {% if goods == false %}
-        <h3>Корзина пуста</h3>
-        {% endif %}
+
         {% for item in goods %}
             <div class="catalog_item">
                 <p>{{ item.good.name }}</p>
@@ -16,4 +14,9 @@
             <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/delete?id={{ item.good.id }}">-</a>
         {% endfor %}
     </div>
+    {% if goods == false %}
+        <h3>Корзина пуста</h3>
+    {% else %}
+    <a href="/php2Course/lesson5/php2Course/public/order/checkout">Оформить заказ</a>
+    {% endif %}
 {% endblock %}

@@ -48,4 +48,13 @@ class OrderController extends Controller
         App::call()->orderService->fillSession($id, App::call()->goodRepository->getOne($id), 'del');
         return header('Location:/php2Course/lesson5/php2Course/public/order/');
     }
+
+    public function checkoutAction(){
+      if(!($this->request->session('role'))){
+          return header('Location:/php2Course/lesson5/php2Course/public/admin/');
+      }
+      $userId = $this->request->session('authUser')->id;
+      $goods = $this->request->session('goods');
+        App::call()->orderService->fillOrder($userId, $goods);
+    }
 }

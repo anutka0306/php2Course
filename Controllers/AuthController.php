@@ -31,6 +31,7 @@ class AuthController extends Controller
     public function logoutAction()
     {
         unset($_SESSION['authUser']);
+        unset($_SESSION['goods']);
         unset($_SESSION['role']);
         return header('Location: /php2Course/lesson5/php2Course/public/');
     }
