@@ -1,14 +1,21 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
     <div class="catalog_wrap">
+        {% set totalSum = 0 %}
         {% for order in myOrder %}
+            {% set sum = order.price * order.quantity %}
+            {% set totalSum = totalSum + sum %}
             <div class="catalog-item">
                 <h1>
-                    <a href="/php2Course/lesson5/php2Course/public/order/myorder?id={{order.good_id}}">{{order.good_id}}
+                    <a href="/php2Course/lesson5/php2Course/public/order/myorder?id={{order.good_id}}">{{order.name}}
                     </a></h1>
                 <h3>Количество: {{ order.quantity}}</h3>
+                <h3>Цена: {{ order.price}}</h3>
+                <img src="/php2Course/lesson5/php2Course/{{ order.image }}">
+                <h3>Сумма: {{ sum }}</h3>
             </div>
         {% endfor %}
+        <h4>Сумма заказа: {{ totalSum }}</h4>
     </div>
 
 {% endblock %}

@@ -59,7 +59,8 @@ class OrderRepository extends Repository
 
     public function getMyOrder($id){
         $tableName = $this->getSubTableName();
-        $sql = "SELECT * FROM {$tableName} WHERE order_id = :order_id";
+        $sql  = "SELECT orderlist.good_id, orderlist.quantity, goods.name, goods.description, goods.image, goods.price FROM {$tableName} LEFT JOIN goods ON goods.id = orderlist.good_id WHERE orderlist.order_id = :order_id";
+       // $sql = "SELECT * FROM {$tableName} WHERE order_id = :order_id";
         return $this->db->queryObjects($sql, $this->getEntityClass(), [':order_id' => $id]);
     }
 }
