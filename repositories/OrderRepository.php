@@ -50,4 +50,16 @@ class OrderRepository extends Repository
         $this->db->exec($sql, $params);
         $entity->id = $this->db->lastInsertId();
     }
+
+    public function getMyOrders($id){
+        $tableName = $this->getTableName();
+        $sql = "SELECT * FROM {$tableName} WHERE user_id = :user_id";
+        return $this->db->queryObjects($sql, $this->getEntityClass(), [':user_id' => $id]);
+    }
+
+    public function getMyOrder($id){
+        $tableName = $this->getSubTableName();
+        $sql = "SELECT * FROM {$tableName} WHERE order_id = :order_id";
+        return $this->db->queryObjects($sql, $this->getEntityClass(), [':order_id' => $id]);
+    }
 }

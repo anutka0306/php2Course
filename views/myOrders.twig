@@ -1,0 +1,17 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+<div class="catalog_wrap">
+    {% for myOrder in myOrders %}
+        <div class="catalog-item">
+        <h1>
+            <a href="/php2Course/lesson5/php2Course/public/order/myorder?id={{myOrder.id}}">Заказ номер {{myOrder.id}}
+            </a></h1>
+        <h3>Статус заказа: {{ myOrder.status_id }}</h3>
+        </div>
+    {% endfor %}
+</div>
+    {% if myOrders == false %}
+    <p>Заказов нет</p>
+    {% endif %}
+
+{% endblock %}

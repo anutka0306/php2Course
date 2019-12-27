@@ -1,0 +1,14 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="catalog_wrap">
+        {% for order in myOrder %}
+            <div class="catalog-item">
+                <h1>
+                    <a href="/php2Course/lesson5/php2Course/public/order/myorder?id={{order.good_id}}">{{order.good_id}}
+                    </a></h1>
+                <h3>Количество: {{ order.quantity}}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

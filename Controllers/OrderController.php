@@ -20,7 +20,21 @@ class OrderController extends Controller
 
     }
 
-    
+    public function myordersAction(){
+        $userId = $this->request->session('authUser')->id;
+        return $this->render('myOrders', [
+            'myOrders' => App::call()->orderRepository->getMyOrders($userId),
+            'title' => 'Все Заказы'
+        ]);
+    }
+
+    public function myorderAction(){
+        $orderId = $this->request->get('id');
+        return $this->render('myOrder', [
+            'myOrder' => App::call()->orderRepository->getMyOrder($orderId),
+            'title' => 'Один заказ'
+        ]);
+    }
 
     public function oneAction(){
        /* return $this->render('good', [
