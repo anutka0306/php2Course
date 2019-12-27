@@ -1,0 +1,17 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="catalog_wrap">
+        {% for order in orders %}
+            <div class="catalog-item">
+                <h1>
+                   Заказ номер {{order.orderId}}
+                   </h1>
+                <h3>Статус заказа: {{ order.status_name }}</h3>
+                <h3>User name: {{ order.name }}</h3>
+                <h3>User Login: {{ order.login }}</h3>
+                <h3>User Telephone: {{ order.tel }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

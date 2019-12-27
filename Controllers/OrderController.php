@@ -36,6 +36,13 @@ class OrderController extends Controller
         ]);
     }
 
+    public function allordersAction(){
+        return $this->render('admin/allOrders', [
+            'orders' => App::call()->orderRepository->getAllOrders(),
+            'title' => 'Все заказы - Администратор'
+        ]);
+    }
+
     public function oneAction(){
        /* return $this->render('good', [
             'good' => App::call()->goodRepository->getOne($this->getId()),
