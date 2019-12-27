@@ -43,7 +43,6 @@ class OrderService
 
        $orderList = new OrderList();
        foreach ($goods as $good){
-           var_dump($orderList->order_id);
            $orderList->order_id = $order_id;
            $orderList->good_id = $good['good']->id;
            $orderList->quantity = $good['quantity'];

@@ -7,9 +7,14 @@
     margin: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .catalog_item{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .catalog_item-img{
     width: 150px;
@@ -34,7 +39,6 @@
     border: 1px solid darkred;
     background: darkred;
     border-radius: 3px;
-    max-width: 10px;
     color: aliceblue;
     text-decoration: none;
     font-weight: bold;

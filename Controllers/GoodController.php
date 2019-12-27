@@ -93,7 +93,7 @@ class GoodController extends Controller
             while(file_exists($upload_filename = '../'. $upload_dir . $now . '-' . $_FILES[$image_fildname]['name'])){
                 $now++;
             }
-            $image_name = $upload_filename;
+            $image_name = substr($upload_filename, 3);
             @move_uploaded_file($_FILES[$image_fildname]['tmp_name'], $upload_filename) or die("Не удалось переместить");
         }else{
             $image_name = $_POST['old-image'];

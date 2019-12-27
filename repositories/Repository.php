@@ -79,12 +79,10 @@ abstract class Repository
         }
         $sql .= " WHERE id = $entity->id";
         echo $sql;
-        //var_dump($params);
         $this->db->exec($sql, $params);
     }
 
     public function save(Entity $entity){
-        var_dump($entity);
         ($entity->id) ? $this->update($entity) : $this->insert($entity);
     }
 
