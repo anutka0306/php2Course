@@ -37,9 +37,16 @@ class OrderController extends Controller
     }
 
     public function allordersAction(){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $order = App::call()->orderRepository->getOne($this->request->post('orderId'));
+            $params = $this->request->post();
+            App::call()->orderService->changeStatus($params, $order);
+            return header('Location: /php2Course/lesson5/php2Course/public/order/allorders/');
+        }
         return $this->render('admin/allOrders', [
             'orders' => App::call()->orderRepository->getAllOrders(),
-            'title' => 'Все заказы - Администратор'
+            'title' => 'Все заказы - Администратор',
+            'statuses'=>App::call()->orderRepository->getOrderStatus()
         ]);
     }
 

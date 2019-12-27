@@ -55,6 +55,15 @@ class OrderService
         ];
 
     }
+    public function changeStatus($params, $order){
+       $order->id = $params['orderId'];
+       $order->status_id = $params['status'];
+        App::call()->orderRepository->save($order);
+        return [
+            'msg'=>'Статус изменен',
+            'success'=> true,
+        ];
+    }
 
     /*public function fillGood($params, $image, $good = null)
     {

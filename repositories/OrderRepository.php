@@ -19,6 +19,10 @@ class OrderRepository extends Repository
     {
         return 'orderlist';
     }
+    public function getStatusTableName(): string
+    {
+        return 'statuslist';
+    }
 
     public function getEntityClass(): string
     {
@@ -67,5 +71,12 @@ class OrderRepository extends Repository
         $tableName = $this->getTableName();
         $sql = "SELECT orders.id AS orderId, orders.status_id, users.id AS userId, users.name, users.tel, users.login, statuslist.status_name FROM {$tableName} LEFT JOIN users ON orders.user_id = users.id LEFT JOIN statuslist ON statuslist.status_id = orders.status_id ";
         return $this->db->queryObjects($sql, $this->getEntityClass());
+    }
+
+    public function getOrderStatus(){
+        $tableName = $this->getStatusTableName();
+        $sql = "SELECT * FROM {$tableName}";
+        return $this->db->queryObjects($sql, $this->getEntityClass());
+        //var_dump($this->db->queryObjects($sql, $this->getEntityClass()));
     }
 }
