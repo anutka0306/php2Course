@@ -1,6 +1,6 @@
 {% extends "layouts/main.twig" %}
 {% block content %}
-<div class="catalog_wrap">
+<div class="catalog_wrap vertical">
     {% for myOrder in myOrders %}
         <div class="catalog-item">
         <h1>
@@ -8,6 +8,7 @@
             </a></h1>
         <h3>Статус заказа: {{ myOrder.status_id }}</h3>
         </div>
+        <hr>
     {% endfor %}
 </div>
     {% if myOrders == false %}

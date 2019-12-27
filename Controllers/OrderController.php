@@ -50,12 +50,6 @@ class OrderController extends Controller
         ]);
     }
 
-    public function oneAction(){
-       /* return $this->render('good', [
-            'good' => App::call()->goodRepository->getOne($this->getId()),
-            'title'=>'Один товар'
-        ]);*/
-    }
 
     public function addAction()
     {
@@ -91,5 +85,6 @@ class OrderController extends Controller
       $userId = $this->request->session('authUser')->id;
       $goods = $this->request->session('goods');
         App::call()->orderService->fillOrder($userId, $goods);
+        return header('Location:/php2Course/lesson5/php2Course/public/order/myorders/');
     }
 }

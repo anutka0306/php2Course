@@ -69,7 +69,7 @@ class OrderRepository extends Repository
 
     public function getAllOrders(){
         $tableName = $this->getTableName();
-        $sql = "SELECT orders.id AS orderId, orders.status_id, users.id AS userId, users.name, users.tel, users.login, statuslist.status_name FROM {$tableName} LEFT JOIN users ON orders.user_id = users.id LEFT JOIN statuslist ON statuslist.status_id = orders.status_id ";
+        $sql = "SELECT orders.id AS orderId, orders.status_id, users.id AS userId, users.name, users.tel, users.login, statuslist.status_name FROM {$tableName} LEFT JOIN users ON orders.user_id = users.id LEFT JOIN statuslist ON statuslist.status_id = orders.status_id ORDER BY orders.id";
         return $this->db->queryObjects($sql, $this->getEntityClass());
     }
 

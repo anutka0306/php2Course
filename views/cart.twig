@@ -9,14 +9,17 @@
                 <p>{{ item.good.description }}</p>
                 <p>Цена: {{ item.good.price }} РУБ.</p>
                 <img src="/php2Course/lesson5/php2Course/{{ item.good.image }}"/>
+                <div class="buttons-wrap">
+                <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/add?id={{ item.good.id }}&inCart=true">+</a>
+                <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/delete?id={{ item.good.id }}">-</a>
+                </div>
             </div>
-            <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/add?id={{ item.good.id }}&inCart=true">+</a>
-            <a class="back__btn" href="/php2Course/lesson5/php2Course/public/order/delete?id={{ item.good.id }}">-</a>
+
         {% endfor %}
     </div>
     {% if goods == false %}
         <h3>Корзина пуста</h3>
     {% else %}
-    <a href="/php2Course/lesson5/php2Course/public/order/checkout">Оформить заказ</a>
+    <a href="/php2Course/lesson5/php2Course/public/order/checkout" class="back__btn" style="margin: 0 auto">Оформить заказ</a>
     {% endif %}
 {% endblock %}

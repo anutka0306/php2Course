@@ -9,12 +9,14 @@
     <title>{% block title %}{{ title }} {% endblock %}</title>
 </head>
 <body>
+<nav class="mainNav">
 <ul>
     <li><a href="/php2Course/lesson5/php2Course/public/admin/">Main</a></li>
     <li><a href="/php2Course/lesson5/php2Course/public/auth/logout">Exit</a></li>
     <li><a href="/php2Course/lesson5/php2Course/public/">Site</a></li>
     <li><a href="/php2Course/lesson5/php2Course/public/order/myorders/">Мои заказы</a></li>
 </ul>
+</nav>
 <div class="content">
     {% block content %} {% endblock %}
 </div>
