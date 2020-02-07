@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/php2Course/lesson5/php2Course/styles/style.css">
+    <title>{% block title %}{{ title }} {% endblock %}</title>
+</head>
+<body>
+<nav class="mainNav">
+<ul>
+    <li><a href="/php2Course/lesson5/php2Course/public/good/">Goods</a></li>
+    <li><a href="/php2Course/lesson5/php2Course/public/admin/">Adminka</a></li>
+    <li><a href="/php2Course/lesson5/php2Course/public/order/">Cart</a></li>
+</ul>
+</nav>
+<div class="content">
+   {% block content %} {% endblock %}
+</div>
+</body>
+</html>

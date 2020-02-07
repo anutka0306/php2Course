@@ -1,0 +1,15 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+<a href="/php2Course/lesson5/php2Course/public/user/add" class="back__btn">Добавить пользователя</a>
+
+{% for user in users %}
+    <hr>
+<h3>
+<a href="/php2Course/lesson5/php2Course/public/user/one?id={{user.id}}">
+Пользователь:    {{user.login}}
+</a></h3>
+{% else %}
+    <p>Net</p>
+{% endfor %}
+
+{% endblock %}

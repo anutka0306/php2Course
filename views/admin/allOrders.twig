@@ -1,0 +1,31 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="catalog_wrap">
+        {% for order in orders %}
+            <div class="catalog-item good__card_right">
+                <h1>
+                   Заказ номер {{order.orderId}}
+                   </h1>
+                <form method="post">
+                    <input type="hidden" name="orderId" value="{{order.orderId}}">
+                    <select name="status" id="">
+                        {% for status in statuses %}
+                            {% set statusId = status.status_id %}
+                            {% if statusId == order.status_id %}
+                        <option value="{{ status.status_id }}" selected>{{ status.status_name }}</option>
+                            {% else %}
+                                <option value="{{ status.status_id }}">{{ status.status_name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Change">
+                </form>
+                <h3>Статус заказа: {{ order.status_name }}</h3>
+                <h3>User name: {{ order.name }}</h3>
+                <h3>User Login: {{ order.login }}</h3>
+                <h3>User Telephone: {{ order.tel }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

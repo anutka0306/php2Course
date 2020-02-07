@@ -1,0 +1,14 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+<div class="catalog_wrap">
+{% for good in goods %}
+    <div class="catalog_item">
+        <h3><a href="/php2Course/lesson5/php2Course/public/good/one?id={{good.id}}">{{good.name}}</a></h3>
+        <a href="/php2Course/lesson5/php2Course/public/good/one?id={{good.id}}">
+            <img src="/php2Course/lesson5/php2Course/{{good.image}}" alt="{{good.description}}" class="catalog_item-img">
+        </a>
+        <a href="/php2Course/lesson5/php2Course/public/order/add?id={{ good.id }}" class="back__btn">Add to Cart</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+
+<h1>Логин: {{user.login}}</h1>
+<p>Имя пользователя: {{user.name}}</p>
+<p>Телефон: {{user.tel}}</p>
+<p>Роль: {{user.role}}</p>
+
+<a href="/php2Course/lesson5/php2Course/public/user/update?id={{user.id}}" class="back__btn">Edit User</a>
+    <a href="/php2Course/lesson5/php2Course/public/user/delete?id={{user.id}}" class="back__btn">Delete User</a>
+{% endblock %}

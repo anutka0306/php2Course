@@ -1,0 +1,23 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+
+<br>
+<hr>
+<a class="back__btn" href="/php2Course/lesson5/php2Course/public/good/">В Каталог</a>
+<hr>
+<div class="good__card">
+    <div class="good__card_left">
+        <h2>{{ good.name }}</h2>
+        <img src="/php2Course/lesson5/php2Course/{{good.image}}" alt="{{good.description}}" class="good__card-img">
+        <h3>{{good.price}} RUB.</h3>
+    </div>
+    <div class="good__card_right">
+        <p class="good__card_description">
+            {{good.description}}
+        </p>
+    </div>
+</div>
+<a href="/php2Course/lesson5/php2Course/public/order/add?id={{ good.id }}&inCard=true" class="back__btn">Add to Cart</a>
+<a class="back__btn" href="/php2Course/lesson5/php2Course/public/good/">В Каталог</a>
+
+{% endblock %}
